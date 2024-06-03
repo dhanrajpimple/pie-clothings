@@ -1,0 +1,29 @@
+* {
+    font-family: 'Bebas Neue', sans-serif;
+}
+
+.login-form {
+    margin: 100px auto;
+    border: 1px solid black;
+    width: 500px;
+    max-width: 90%;
+    padding: 30px 50px 35px 50px;
+}
+
+.login-form p {
+    font-size: 16px;
+    padding: 10px 0px;
+
+}
+
+.login-form input {
+    width: 100%;
+    padding: 8px;
+}
+
+.login-form button {
+    margin-top: 20px;
+    padding: 8px 20px;
+    width: 100%;
+    font-size: 18px;
+}

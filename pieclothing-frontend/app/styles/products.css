@@ -1,0 +1,70 @@
+* {
+  font-family: "Bebas Neue", sans-serif; letter-spacing: 2px
+}
+.product {
+  width: 50%;
+}
+
+.title {
+  margin: 50px auto;
+  text-align: center;
+  font-family: 'Bebas Neue', sans-serif;}
+
+.fit {
+  width: 100%;
+}
+
+.products {
+  /* width: 1300px; */
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding-bottom: 15px;
+  padding-top: 60px;
+}
+
+.products .card {
+  width: 100%;
+  max-width: 350px;
+  /* border: 1px solid lightgray; */
+  padding: 20px 20px 0px 20px;
+  margin: 20px 20px 0px 20px;
+
+  border-radius: 14px;
+  /* text-align: center; */
+  font-family: "Lucida Handwriting", cursive;
+  transition: transform 0.2s;
+}
+.products a {
+  text-decoration: none;
+  color: black;
+}
+.products .card h1 {
+  font-size: 24px;
+}
+
+.product .card .description {
+  font-size: 12px;
+}
+
+.products .card:hover {
+  transform: scale(1.02);
+}
+
+.products .product-image {
+  width: 100%;
+  border-radius: 14px;
+  aspect-ratio: 4/5;
+}
+
+.pricing span {
+  text-decoration: line-through;
+}
+
+.reviews-container {
+  max-height: 200px; /* Adjust based on your design */
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  padding: 10px;
+}

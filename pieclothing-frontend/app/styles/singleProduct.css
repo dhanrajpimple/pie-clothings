@@ -1,0 +1,130 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Bebas Neue", sans-serif;
+}
+
+.singleProduct {
+  padding: 50px 0px;
+}
+
+.pro-main {
+  display: flex;
+}
+
+.pro-img {
+  width: 55%;
+}
+
+.pro-img .main-img {
+  width: 90%;
+  margin-left: 5%;
+  padding: 50px;
+  aspect-ratio: 4/5;
+}
+
+.pro-details {
+  width: 45%;
+  padding: 50px 0px;
+}
+
+.pro-details h1 {
+  font-size: 35px;
+}
+
+.pro-details h3 {
+  font-size: 24px;
+  padding-top: 15px;
+}
+
+.pro-details h3 span {
+  font-size: 14px;
+  text-decoration: line-through;
+}
+
+.pro-details .size {
+  padding: 0px 10px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.pro-details .size:first .box {
+  margin-left: 0px;
+}
+
+.pro-details .size .box {
+  margin: 10px 5px;
+  border: 1px solid black;
+  padding: 10px;
+}
+
+.add-to-cart {
+  padding: 10px;
+  text-align: center;
+  width: 90%;
+  margin-top: 20px;
+  border: 1px solid black;
+}
+
+.buy-now {
+  padding: 10px;
+  text-align: center;
+  width: 90%;
+  margin-top: 20px;
+  border: 1px solid black;
+  color: white;
+  background: black;
+}
+
+.decription {
+  /* padding: 10px 0px 20px 0px; */
+  font-size: 18px;
+}
+.img-thumb {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 90%;
+  margin: auto;
+}
+.img-thumb img {
+  width: 100px;
+  padding: 0;
+  margin: 10px;
+}
+
+@media (max-width: 992px) {
+  .pro-main {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .pro-main .pro-img {
+    width: 100%;
+  }
+  .pro-img .main-img {
+    padding: 15px;
+  }
+  .img-thumb {
+    justify-content: center;
+  }
+  .img-thumb img {
+    width: 50px;
+  }
+  .pro-main .pro-details {
+    width: 100%;
+    padding: 15px 35px;
+  }
+  .add-to-cart {
+    width: 100%;
+  }
+  .buy-now {
+    width: 100%;
+  }
+}
+
+summary {
+  margin-left: -15px;
+}
+summary::marker {
+  color: white;
+}

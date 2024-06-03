@@ -1,0 +1,75 @@
+.gs-checkout {
+  padding: 100px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.gs-form {
+  width: 60%;
+}
+.gs-payy {
+  width: 40%;
+  padding: 40px 0px 0px 0px;
+}
+.gs-form input {
+  padding: 8px;
+  width: 100%;
+}
+.gs-form .input {
+  margin: 15px 0px;
+}
+.gs-form h3 {
+  font-size: 25px;
+}
+.payment-group {
+  padding: 15px;
+}
+.payment-group p {
+  padding: 10px 5%;
+  border: 1px solid black;
+  text-align: center;
+  margin: 10px 0px;
+}
+.payment-group p span {
+  font-size: 12px;
+}
+.payment-group .select {
+  background: gainsboro;
+}
+
+.payment-group table {
+  width: 100%;
+  text-align: center;
+}
+.payment-group table th,
+.payment-group table td {
+  padding: 5px;
+}
+
+h4 {
+  margin: 10px 0px -10px 0px;
+}
+
+h4 span {
+  float: right;
+}
+
+.btn-style {
+  width: 100%;
+  background: black;
+  color: white;
+  padding: 5px;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 992px) {
+  .gs-form {
+    width: 100%;
+  }
+  .gs-payy {
+    width: 100%;
+  }
+  .gs-checkout {
+    padding: 100px 5%;
+  }
+}

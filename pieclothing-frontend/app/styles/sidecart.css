@@ -1,0 +1,90 @@
+* {
+  font-family: "Bebas Neue", sans-serif;
+}
+
+.fullscreen {
+  width: 100vw;
+  height: 100vh;
+  background: transparent;
+  z-index: 2;
+  position: absolute;
+}
+
+.ca-cncl-no {
+  display: none;
+  transition: 0.3s;
+}
+
+.scart {
+  position: fixed;
+  height: 100vh;
+  background-color: black;
+  right: 0;
+  transition: 0.3s;
+  z-index: 2;
+  width: 400px;
+  max-width: 90%;
+  transform: translateX(400px);
+  color: white;
+  overflow-y: scroll;
+}
+.scart::-webkit-scrollbar {
+  width: 0px;
+}
+.scart h3 {
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 20px;
+  letter-spacing: 3px;
+}
+
+.cart-det {
+  display: flex;
+  padding: 15px;
+}
+.cart-info {
+  padding: 0 20px;
+  width: 100%;
+}
+.cart-info h5 {
+  font-size: 20px;
+  letter-spacing: 3px;
+}
+.cart-img img {
+  width: 100px;
+  aspect-ratio: 4/5;
+}
+
+.scart-show {
+  width: 400px;
+  transform: translateX(0px);
+  max-width: 90%;
+  transition: 0.3s;
+}
+
+.cartBtn {
+  font-size: 48px;
+  font-weight: 900;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  z-index: 3;
+}
+
+.ca-cncl {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 39;
+  transition: 0.3s;
+}
+
+.checkout-btn {
+  padding: 20px;
+}
+.checkout-btn button {
+  background: white;
+  width: 100%;
+  padding: 10px 30px;
+  font-size: 1.2rem;
+}
