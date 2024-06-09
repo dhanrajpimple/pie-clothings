@@ -6,6 +6,7 @@ require("dotenv").config();
 
 const Order = require("../models/Order");
 
+
 // const razorpay = new Razorpay({
 //   key_id: process.env.RAZORPAY_KEY_ID,
 //   key_secret: process.env.RAZORPAY_KEY_SECRET,
@@ -110,6 +111,7 @@ exports.orderData = async (req, res) => {
       status,
     });
 
+
     const startTime = Date.now();
 
     const products = cartList.map(item => ({
@@ -117,7 +119,8 @@ exports.orderData = async (req, res) => {
       name: item.name,
       quantity: item.quantity,
       size: item.size,
-      gallery: item.gallery
+      gallery: item.gallery,
+     
     }));
 
     const order = await Order.create({
@@ -131,7 +134,7 @@ exports.orderData = async (req, res) => {
       status,
       cartId,
       products,
-      uid,
+      uid
     });
 
     const endTime = Date.now();

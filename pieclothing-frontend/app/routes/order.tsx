@@ -7,6 +7,7 @@ import { getOrdersByEmail } from "~/controllers/orderController";
 import { useNavigate } from "@remix-run/react";
 import { imgServer } from "~/utils/domain";
 import { submitReview } from "~/controllers/reviewController"; // You need to create this controller
+import { generateInvoicePDF } from "../component/invoice"; // Utility to generate invoice
 
 const Orders = () => {
   const [email, setEmail] = useState("");
@@ -82,10 +83,12 @@ const Orders = () => {
   const handleReviewButtonClick = (product) => {
     setSelectedProduct(product);
     setProductId(product.productId);
-    console.log('this is coalled');
-    
   };
 
+  const handleDownloadInvoice = (order) => {
+    console.log(order, "this is product data for me")
+    generateInvoicePDF(order, email);
+  };
 
   return (
     <>
@@ -120,13 +123,20 @@ const Orders = () => {
                         />
                       </td>
                       <td>{order.status}</td>
-                      <td>
+                      <td >
                         {order.status === "Completed" && (
-                        <button
-                        onClick={() => handleReviewButtonClick(product)}
-                      >
-                            Review
-                          </button>
+                          <>
+                            <button
+                              onClick={() => handleReviewButtonClick(product)}
+                            >
+                              Review
+                            </button>
+                            <button
+                              onClick={() => handleDownloadInvoice(order)}
+                            >
+                               Invoice
+                            </button>
+                          </>
                         )}
                       </td>
                     </tr>
@@ -144,21 +154,21 @@ const Orders = () => {
                 Rating (out of 5): 
               </label>
               <input
-                  type="number"
-                  value={rating}
-                  onChange={(e) => setRating(e.target.value)}
-                  max="5"
-                  min="1"
-                />
+                type="number"
+                value={rating}
+                onChange={(e) => setRating(e.target.value)}
+                max="5"
+                min="1"
+              />
             </div>
             <div className="review-main">
               <label>
                 Comment:
               </label>
               <textarea
-                  value={comment}
-                  onChange={(e) => setComment(e.target.value)}
-                />
+                value={comment}
+                onChange={(e) => setComment(e.target.value)}
+              />
             </div>
             <button onClick={handleReviewSubmit}>Submit Review</button>
           </div>
