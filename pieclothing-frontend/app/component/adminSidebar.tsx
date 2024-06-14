@@ -1,5 +1,5 @@
 import { Link } from "@remix-run/react";
-
+import { deleteCookie } from "~/utils/cookies";
 const AdminSidebar = () => {
   return (
     <div className="dash-sidebar">
@@ -23,6 +23,16 @@ const AdminSidebar = () => {
 
         <div className="sidebar-menu">
           <Link to={"../admin/users"}>Users</Link>
+        </div>
+        <div className="sidebar-menu">
+        <a
+              href="/"
+              onClick={() => {
+                deleteCookie("UD");
+              }}
+            >
+              Logout
+            </a>
         </div>
       </div>
     </div>

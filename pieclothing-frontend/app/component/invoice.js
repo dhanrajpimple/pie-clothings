@@ -39,7 +39,7 @@ export const generateInvoicePDF = (order, email) => {
     product.name,
     product.quantity,
     product.size,
-    price
+    1990
   ]);
 
   doc.autoTable({

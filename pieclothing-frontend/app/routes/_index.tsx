@@ -2,6 +2,7 @@ import Navbar from "~/component/navbar";
 import styles from "../styles/index.css";
 import productStyles from "../styles/products.css"
 import Hero from "~/component/hero";
+import video from '../assests/video.mp4'
 // import Products from "~/component/products";
 import { getProducts } from "~/controllers/productController";
 import HomeProducts from "~/component/homeProducts";
@@ -14,7 +15,15 @@ const _index = () => {
       <HomeProducts />
 
       <div className="gs-vdo">
-        <iframe src="https://www.youtube.com/embed/9Pbe4DyMQYw?si=SoWUfS1wltLZWQAb" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" ></iframe>
+      <video
+        src={video}
+        title="Local video player"
+        
+        autoPlay
+        muted
+        width="100%"
+        height="auto"
+      ></video>
       </div>
 
       {/* <Products /> */}

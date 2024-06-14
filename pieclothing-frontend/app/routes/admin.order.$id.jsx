@@ -13,7 +13,7 @@ import { imgServer } from "../utils/domain";
 const OrderId = () => {
   const { id } = useParams();
   const [order, setOrder] = useState({});
-  const [products, setProducts] = useState();
+  const [products, setProducts] = useState([]);
   const [disable, setDisable] = useState(true);
   const [status, setStatus] = useState(order?.status || "In Progress");
 
@@ -33,16 +33,14 @@ const OrderId = () => {
       const response = await orderdatabyid(id);
       if (response?.success) {
         setOrder(response?.order[0]);
-
+        setProducts(response?.order[0]?.products || []);
         const cartResponse = await viewCartByCartId(response?.order[0]?.cartId);
-        // const cartResponse = await viewCartByID(response?.order[0]?.uid);
-        console.log(cartResponse);
+        console.log('Cart Response:', cartResponse);
 
-        setProducts(cartResponse?.productList);
       } else {
         alert("Something went wrong");
       }
-      console.log(response);
+      console.log('Order Response:', response);
     } catch (err) {
       alert("Something went wrong");
     }
@@ -74,25 +72,11 @@ const OrderId = () => {
               <div
                 style={{
                   padding: "10px 20px",
-                  // background: "black",
                   color: "white",
                   fontWeight: 600,
                   margin: "10px 30px",
                 }}
               ></div>
-
-              {/* <button
-                style={{
-                  padding: "10px 20px",
-                  background: "black",
-                  color: "white",
-                  fontWeight: 600,
-                  margin: "10px 30px",
-                }}
-                onClick={() => setDisable(!disable)}
-              >
-                {!disable ? "Cancel" : "Edit"}
-              </button> */}
 
               <div className="order-table">
                 <table border={1} className="cust-details">
@@ -106,14 +90,12 @@ const OrderId = () => {
                         <input
                           type="text"
                           disabled={disable}
-                          value={order?.name}
+                          value={order?.name || ''}
                           onChange={(e) => {
-                            setOrder((prev) => {
-                              return {
-                                ...prev,
-                                name: e.target.value,
-                              };
-                            });
+                            setOrder((prev) => ({
+                              ...prev,
+                              name: e.target.value,
+                            }));
                           }}
                         />
                       </th>
@@ -124,14 +106,12 @@ const OrderId = () => {
                         <input
                           type="text"
                           disabled={true}
-                          value={order?.email}
+                          value={order?.email || ''}
                           onChange={(e) => {
-                            setOrder((prev) => {
-                              return {
-                                ...prev,
-                                email: e.target.value,
-                              };
-                            });
+                            setOrder((prev) => ({
+                              ...prev,
+                              email: e.target.value,
+                            }));
                           }}
                         />
                       </th>
@@ -142,36 +122,31 @@ const OrderId = () => {
                         <input
                           type="text"
                           disabled={disable}
-                          value={order?.phone}
+                          value={order?.phone || ''}
                           onChange={(e) => {
-                            setOrder((prev) => {
-                              return {
-                                ...prev,
-                                phone: e.target.value,
-                              };
-                            });
+                            setOrder((prev) => ({
+                              ...prev,
+                              phone: e.target.value,
+                            }));
                           }}
                         />
                       </th>
                     </tr>
-
                     <tr>
                       <th>Address</th>
                       <th className="input-box">
                         <input
                           type="text"
                           disabled={disable}
-                          value={order?.deliveryAdd?.address}
+                          value={order?.deliveryAdd?.address || ''}
                           onChange={(e) => {
-                            setOrder((prev) => {
-                              return {
-                                ...prev,
-                                deliveryAdd: {
-                                  ...prev.deliveryAdd,
-                                  address: e.target.value,
-                                },
-                              };
-                            });
+                            setOrder((prev) => ({
+                              ...prev,
+                              deliveryAdd: {
+                                ...prev.deliveryAdd,
+                                address: e.target.value,
+                              },
+                            }));
                           }}
                         />
                       </th>
@@ -182,17 +157,15 @@ const OrderId = () => {
                         <input
                           type="text"
                           disabled={disable}
-                          value={order?.deliveryAdd?.city}
+                          value={order?.deliveryAdd?.city || ''}
                           onChange={(e) => {
-                            setOrder((prev) => {
-                              return {
-                                ...prev,
-                                deliveryAdd: {
-                                  ...prev.deliveryAdd,
-                                  city: e.target.value,
-                                },
-                              };
-                            });
+                            setOrder((prev) => ({
+                              ...prev,
+                              deliveryAdd: {
+                                ...prev.deliveryAdd,
+                                city: e.target.value,
+                              },
+                            }));
                           }}
                         />
                       </th>
@@ -203,17 +176,15 @@ const OrderId = () => {
                         <input
                           type="text"
                           disabled={disable}
-                          value={order?.deliveryAdd?.pincode}
+                          value={order?.deliveryAdd?.pincode || ''}
                           onChange={(e) => {
-                            setOrder((prev) => {
-                              return {
-                                ...prev,
-                                deliveryAdd: {
-                                  ...prev.deliveryAdd,
-                                  pincode: e.target.value,
-                                },
-                              };
-                            });
+                            setOrder((prev) => ({
+                              ...prev,
+                              deliveryAdd: {
+                                ...prev.deliveryAdd,
+                                pincode: e.target.value,
+                              },
+                            }));
                           }}
                         />
                       </th>
@@ -224,17 +195,15 @@ const OrderId = () => {
                         <input
                           type="text"
                           disabled={disable}
-                          value={order?.deliveryAdd?.state}
+                          value={order?.deliveryAdd?.state || ''}
                           onChange={(e) => {
-                            setOrder((prev) => {
-                              return {
-                                ...prev,
-                                deliveryAdd: {
-                                  ...prev.deliveryAdd,
-                                  state: e.target.value,
-                                },
-                              };
-                            });
+                            setOrder((prev) => ({
+                              ...prev,
+                              deliveryAdd: {
+                                ...prev.deliveryAdd,
+                                state: e.target.value,
+                              },
+                            }));
                           }}
                         />
                       </th>
@@ -245,17 +214,15 @@ const OrderId = () => {
                         <input
                           type="text"
                           disabled={disable}
-                          value={order?.deliveryAdd?.country}
+                          value={order?.deliveryAdd?.country || ''}
                           onChange={(e) => {
-                            setOrder((prev) => {
-                              return {
-                                ...prev,
-                                deliveryAdd: {
-                                  ...prev.deliveryAdd,
-                                  country: e.target.value,
-                                },
-                              };
-                            });
+                            setOrder((prev) => ({
+                              ...prev,
+                              deliveryAdd: {
+                                ...prev.deliveryAdd,
+                                country: e.target.value,
+                              },
+                            }));
                           }}
                         />
                       </th>
@@ -283,7 +250,6 @@ const OrderId = () => {
                           <option value="In Progress">In Progress</option>
                           <option value="Completed">Completed</option>
                         </select>
-
                         <button> {order?.status}</button>
                       </th>
                     </tr>
@@ -291,7 +257,6 @@ const OrderId = () => {
                       <th>Amount Paid</th>
                       <th>Rs.{order?.amountPaid}</th>
                     </tr>
-
                     <tr>
                       <th>Amount Pending</th>
                       <th>Rs.{order?.amountRemaining}</th>
@@ -335,22 +300,27 @@ const OrderId = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {products?.map((p, i) => {
-                      return (
-                        <tr>
+                    {products?.length > 0 ? (
+                      products.map((p, i) => (
+                        <tr key={i}>
                           <td>{i + 1}</td>
                           <td>
                             <img
                               src={`${imgServer}/imgs/${p?.gallery[0]}`}
                               width={50}
+                              alt={p?.name}
                             />
                           </td>
                           <td>{p?.name}</td>
                           <td>{p?.quantity}</td>
                           <td>{p?.size}</td>
                         </tr>
-                      );
-                    })}
+                      ))
+                    ) : (
+                      <tr>
+                        <td colSpan="5">No products found</td>
+                      </tr>
+                    )}
                   </tbody>
                 </table>
               </div>

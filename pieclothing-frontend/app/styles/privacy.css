@@ -1,0 +1,16 @@
+.privacy-container {
+  max-width: 800px;
+  margin: 0 auto; /* Center the container */
+  padding: 80px; /* Add padding on all sides */
+  text-align: left; /* Ensure text is left-aligned */
+}
+
+.privacy-container h1,
+.privacy-container h2 {
+  text-align: center; /* Center the headings */
+}
+
+.privacy-container p,
+.privacy-container ul {
+  margin-bottom: 15px; /* Add space between paragraphs and lists */
+}
