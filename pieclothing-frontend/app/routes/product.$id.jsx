@@ -31,6 +31,7 @@ const Product = () => {
   const [imgUrl, setImgUrl] = useState(`${imgServer}/imgs/1700847513859.png`);
   const [msg, setMsg] = useState("");
   const [showCart, setShowCart] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(true);
 
   useEffect(() => {
     console.log("Loaderdata", loaderData);
@@ -42,7 +43,6 @@ const Product = () => {
       return {
         ...prev,
         pid: loaderData?.singleProductt?.product?._id,
-       
       };
     });
     userDetails();
@@ -52,7 +52,7 @@ const Product = () => {
   const fetchReviews = async (productId) => {
     console.log(productDetails, "this is me");
     try {
-      console.log(productId, "his is sme")
+      console.log(productId, "his is sme");
       const response = await getReviews({ productId });
       setReviews(response.reviews);
     } catch (error) {
@@ -68,7 +68,8 @@ const Product = () => {
     await getCookie("UD")
       .then((res) => {
         if (!res) {
-          throw err;
+          setLoggedIn(false);
+          throw new Error("User not logged in");
         }
         console.log("res", JSON.parse(res));
         setForCart((prev) => {
@@ -83,7 +84,7 @@ const Product = () => {
         getCookie("TUD")
           .then((res) => {
             if (!res) {
-              throw err;
+              throw new Error("Temp user ID not found");
             }
             setForCart((prev) => {
               return {
@@ -122,6 +123,11 @@ const Product = () => {
   };
 
   const addToCart = async (_id) => {
+    if (!loggedIn) {
+      navigate("/login");
+      return;
+    }
+
     await userDetails();
 
     if (productDetails?.size.length > 0) {

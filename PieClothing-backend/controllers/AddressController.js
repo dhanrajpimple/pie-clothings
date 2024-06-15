@@ -1,9 +1,6 @@
 const Address = require("../models/Address");
-
-
 exports.singleAddress = async (req, res) => {
   try {
-    
     const { id } = req.params;
     const address = await Product.find({id});
     if(!address){

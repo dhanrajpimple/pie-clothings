@@ -76,8 +76,10 @@ const Orders = () => {
       setRating(0);
       setComment("");
     } catch (err) {
+      alert('you submit review before')
       console.error("Error submitting review:", err);
     }
+    setSelectedProduct(null);
   };
 
   const handleReviewButtonClick = (product) => {
@@ -145,10 +147,14 @@ const Orders = () => {
               : null}
           </tbody>
         </table>
-
+       <div className="modal" style={selectedProduct ? {display:'flex'} : {display:'none'}} >
         {selectedProduct && (
           <div className="review-form">
+           <div style={{display:'flex', gap:5
+           }}>
             <h3>Review Product: {selectedProduct.name}</h3>
+            <div onClick={()=>setSelectedProduct(null)} style={{backgroundColor:'red', cursor:'pointer', fontFamily:"arial", fontWeight:"bold", fontSize:"20px"}}>x</div>
+            </div> 
             <div className="review-main">
               <label>
                 Rating (out of 5): 
@@ -172,7 +178,7 @@ const Orders = () => {
             </div>
             <button onClick={handleReviewSubmit}>Submit Review</button>
           </div>
-        )}
+        )}</div>
       </div>
       <Footer />
     </>
